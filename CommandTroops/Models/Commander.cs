@@ -1,0 +1,37 @@
+﻿using CommandTroops.Commands;
+
+namespace CommandTroops.Models;
+
+/// <summary>
+/// 
+/// This is the Invoker/Sender class, that is responsible 
+/// for calling an Execute() method of a certain Command Class object.
+/// 
+/// </summary>
+public class Commander
+{
+    public string Name { get; set; }
+    private readonly Stack<ICommand> IssuedCommands; 
+
+    public Commander(string name)
+    {
+        Name = name;
+        IssuedCommands = new();
+    }
+
+    public void IssueOrder(ICommand command)
+    {
+        IssuedCommands.Push(command);
+        command.Execute();
+    }
+
+    public void RescindOrder()
+    {
+        if (!IssuedCommands.Any())
+        {
+            return;
+        }
+        var command = IssuedCommands.Pop();
+        command.Undo();
+    }
+}
