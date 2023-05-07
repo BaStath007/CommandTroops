@@ -15,37 +15,40 @@ internal class Program
         Commander commander = new Commander("Napoleon");
         Infantry ICorps = new Infantry("Premier corps d'armée");
         Infantry IICorps = new Infantry("Deuxième corps d'armée");
+        Infantry IIICorps = new Infantry("Troisième corps d'armée");
 
         Console.WriteLine("La Grande Armée has been formed.");
         Console.WriteLine();
         commander.IssueOrder(new MarchCommand(ICorps));
-        Console.WriteLine();
+        
         commander.IssueOrder(new IncreaseSpeedCommand(ICorps, 2));
-        Console.WriteLine();
-        commander.IssueOrder(new IncreaseSpeedCommand(ICorps, 1));
-        Console.WriteLine();
+        
+        commander.ReissueLastOrder();
+        
         commander.RescindOrder();
-        Console.WriteLine();
+        
         commander.IssueOrder(new MarchCommand(IICorps));
-        Console.WriteLine();
+        
         commander.IssueOrder(new IncreaseSpeedCommand(IICorps, 3));
-        Console.WriteLine();
+        
         commander.IssueOrder(new DecreaseSpeedCommand(IICorps, 2));
-        Console.WriteLine();
+        
         commander.IssueOrder(new TurnLeftCommand(ICorps, 45));
-        Console.WriteLine();
+        
         commander.IssueOrder(new TurnRightCommand(ICorps, 90));
-        Console.WriteLine();
+        
         commander.RescindOrder();
-        Console.WriteLine();
+
+        commander.EnforceRetractedOrder();
+        
         commander.IssueOrder(new HaltCommand(ICorps));
-        Console.WriteLine();
+        
         commander.RescindOrder();
-        Console.WriteLine();
+        
         commander.RescindOrder();
-        Console.WriteLine();
-        commander.IssueOrder(new TurnRightCommand(IICorps, 22.5f));
-        Console.WriteLine();
+        
+        commander.IssueOrder(new TurnRightCommand(IICorps, 30));
+        
 
 
         Console.ReadLine();

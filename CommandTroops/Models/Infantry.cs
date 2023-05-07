@@ -9,51 +9,61 @@
 public class Infantry : ITroop
 {
     public string SquadName { get; set; }
-    public float Direction { get; set; } = 90f;
+    public int Direction { get; set; } = 90;
     public int Speed { get; set; } = 0;
 
     public Infantry(string squadName)
     {
         SquadName = squadName;
-        //Direction = 90;
-        //Speed = 0;
     }
 
     public void Halt()
     {
         Console.WriteLine($"{this.SquadName} has stoped marching.");
+        Console.WriteLine();
         Speed = 0;
     }
 
     public void March()
     {
         Console.WriteLine($"{this.SquadName} has begun marching.");
+        Console.WriteLine();
         Speed = 1;
     }
 
-    public void TurnLeft(float degrees)
+    public void TurnLeft(int degrees)
     {
         Console.WriteLine($"{this.SquadName} has turned {degrees} degrees to the left.");
         Direction += degrees;
+        int quontient = Direction / 360;
+        int direction = Direction - (quontient * 360);
+        Console.WriteLine($"{this.SquadName} direction is {direction} degrees.");
+        Console.WriteLine();
     }
 
-    public void TurnRight(float degrees)
+    public void TurnRight(int degrees)
     {
         Console.WriteLine($"{this.SquadName} has turned {degrees} degrees to the right.");
         Direction -= degrees;
+        int quontient = Direction / 360;
+        int direction = Direction - (quontient * 360);
+        Console.WriteLine($"{this.SquadName} direction is {direction} degrees.");
+        Console.WriteLine();
     }
 
     public void IncreaseSpeed(int speed)
     {
         Console.WriteLine($"{this.SquadName} has increased its speed by {speed}.");
         Speed += speed;
-        Console.WriteLine($"{this.SquadName} is marching at {Speed} kph.");
+        Console.WriteLine($"{this.SquadName} is marching at {Speed} km/h.");
+        Console.WriteLine();
     }
 
     public void DecreaseSpeed(int speed)
     {
         Console.WriteLine($"{this.SquadName} has decreased its speed by {speed}.");
         Speed -= speed;
-        Console.WriteLine($"{this.SquadName} is marching at {Speed} kph.");
+        Console.WriteLine($"{this.SquadName} is marching at {Speed} km/h.");
+        Console.WriteLine();
     }
 }

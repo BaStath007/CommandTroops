@@ -11,20 +11,35 @@ namespace CommandTroops.Models;
 public class Commander
 {
     public string Name { get; set; }
-    private readonly Stack<ICommand> IssuedCommands; 
+    private readonly Stack<ICommand> IssuedCommands = new();
+    private readonly Stack<ICommand> RetractedCommands = new();
 
+    
     public Commander(string name)
     {
         Name = name;
-        IssuedCommands = new();
     }
 
+    // Execute
     public void IssueOrder(ICommand command)
     {
         IssuedCommands.Push(command);
         command.Execute();
     }
 
+    // Repeat
+    public void ReissueLastOrder()
+    {
+        if (!IssuedCommands.Any())
+        {
+            return;
+        }
+        var command = IssuedCommands.Last();
+        IssuedCommands.Push(command);
+        command.Execute();
+    }
+
+    // Undo
     public void RescindOrder()
     {
         if (!IssuedCommands.Any())
@@ -32,6 +47,20 @@ public class Commander
             return;
         }
         var command = IssuedCommands.Pop();
+        RetractedCommands.Push(command);
         command.Undo();
+    }
+
+
+    // Redo
+    public void EnforceRetractedOrder()
+    {
+        if (!RetractedCommands.Any())
+        {
+            return;
+        }
+        var command = RetractedCommands.Pop();
+        IssuedCommands.Push(command);
+        command.Execute();
     }
 }

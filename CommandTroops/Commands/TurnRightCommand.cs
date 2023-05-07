@@ -12,9 +12,9 @@ public class TurnRightCommand : ICommand
 {
     private readonly ITroop troop;
 
-    private readonly float degrees;
+    private readonly int degrees;
 
-    public TurnRightCommand(Infantry _troop, float _degrees)
+    public TurnRightCommand(Infantry _troop, int _degrees)
     {
         troop = _troop;
         degrees = _degrees;

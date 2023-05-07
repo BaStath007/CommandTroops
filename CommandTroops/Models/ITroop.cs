@@ -3,8 +3,8 @@
 public interface ITroop
 {
     void March();
-    void TurnRight(float degrees);
-    void TurnLeft(float degrees);
+    void TurnRight(int degrees);
+    void TurnLeft(int degrees);
     void IncreaseSpeed(int speed);
     void DecreaseSpeed(int speed);
     void Halt();
