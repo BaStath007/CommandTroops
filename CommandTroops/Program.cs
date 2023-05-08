@@ -19,6 +19,8 @@ internal class Program
 
         Console.WriteLine("La Grande Armée has been formed.");
         Console.WriteLine();
+        commander.IssueOrder(new MarchThenIncreaseSpeedCommand(IIICorps, 1));
+
         commander.IssueOrder(new MarchCommand(ICorps));
         
         commander.IssueOrder(new IncreaseSpeedCommand(ICorps, 2));

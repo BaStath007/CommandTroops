@@ -34,7 +34,7 @@ public class Commander
         {
             return;
         }
-        var command = IssuedCommands.Last();
+        var command = IssuedCommands.First();
         IssuedCommands.Push(command);
         command.Execute();
     }

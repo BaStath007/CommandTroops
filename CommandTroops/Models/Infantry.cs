@@ -53,7 +53,7 @@ public class Infantry : ITroop
 
     public void IncreaseSpeed(int speed)
     {
-        Console.WriteLine($"{this.SquadName} has increased its speed by {speed}.");
+        Console.WriteLine($"{this.SquadName} has increased its speed by {speed} km/h.");
         Speed += speed;
         Console.WriteLine($"{this.SquadName} is marching at {Speed} km/h.");
         Console.WriteLine();
@@ -61,7 +61,7 @@ public class Infantry : ITroop
 
     public void DecreaseSpeed(int speed)
     {
-        Console.WriteLine($"{this.SquadName} has decreased its speed by {speed}.");
+        Console.WriteLine($"{this.SquadName} has decreased its speed by {speed} km/h.");
         Speed -= speed;
         Console.WriteLine($"{this.SquadName} is marching at {Speed} km/h.");
         Console.WriteLine();
